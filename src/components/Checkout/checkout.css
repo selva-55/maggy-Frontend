@@ -1,0 +1,299 @@
+.checkoutpage {
+    position: relative;
+    padding-top: 80px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 1240px;
+}
+
+.checkoutcontent {
+    min-height: 607px;
+    background: #e9ecee;
+}
+
+.screenSplit {
+    max-width: 1200px;
+    min-width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 31px;
+}
+
+.leftScreen {
+    flex: 1;
+    margin-right: 30px;
+    position: relative;
+}
+
+.rightScreen {
+    width: 366px;
+}
+
+.leftContent1 {
+    position: relative;
+    margin-left: 25px;
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 35px 40px 39px;
+}
+
+.leftContent2 {
+    position: relative;
+    margin-left: 25px;
+    background: #fff;
+    padding: 35px 40px 39px;
+}
+
+.accountCart {
+    font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #282c3f;
+    margin-bottom: 32px;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.LogginCart {
+    gap: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #282c3f;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.LoggedInIcon {
+    color: #60b246;
+}
+
+.loggedUser {
+    display: flex;
+    font-weight: 600;
+    margin-top: 6px;
+    line-height: 1.12;
+    font-size: 18px;
+    color: #282c3f;
+    gap: 10px;
+}
+
+.addressInputBox {
+    background-color: transparent;
+    line-height: normal;
+    outline: none;
+    height: 70px;
+    width: 50%;
+    font-size: 17px;
+    margin: 0;
+    padding: 0 20px;
+    box-shadow: none;
+    box-sizing: border-box;
+    border-radius: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    border: 1px solid;
+    border-color: rgba(118, 118, 118, 0.3);
+}
+
+.AddAddressButton {
+    border: 1px solid #60b246;
+    margin-top: 30px;
+    padding: 9px 0;
+    text-transform: uppercase;
+    background: transparent;
+    cursor: pointer;
+    width: 50%;
+    height: 34px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: .3px;
+    position: relative;
+    color: #60b246;
+}
+
+.rightContent {
+    position: relative;
+    contain: content;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    background: white;
+}
+
+.Rightheader {
+    cursor: pointer;
+    padding: 20px 30px;
+    background: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 60px;
+}
+
+.headerImgSpan {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.ImgSpan {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}
+
+.headerSpan{
+    margin-left: 14px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 50px;
+}
+
+.RestaurantText{
+    font-size: 17px;
+    color: #282c3f;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.LocationText{
+    font-size: 13px;
+    color: #686b78;
+}
+
+.contextItem{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 0px 30px 0px 30px;
+    overflow-y: scroll;
+    background: #fff;
+    height: 360px;
+}
+
+.itemdiv{
+    font-weight: 300;
+    color: #282c3f;
+    font-family: ProximaNova,arial,Helvetica Neue,sans-serif;
+    letter-spacing: 0;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.itemSplit{
+    padding: 10px 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.itemName{
+    width: 100px;
+    overflow-wrap: break-word;
+}
+
+.cartAddDecrease{
+    display: flex;
+    height: 30px;
+    width: 83px;
+    border: 1px solid #d4d5d9;
+    color: #60b246;
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+.itemAmount{
+    font-size: 13px;
+    color: #535665;
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ItemCartButton{
+    border: 0;
+    background: transparent;
+    width: -webkit-fill-available;
+    font-weight: 500;
+    font-size: 20px;
+    color: #60b246;
+    cursor: pointer;
+}
+
+.BillpayText{
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #282c3f;
+    font-family: ProximaNova,arial,Helvetica Neue,sans-serif;
+    letter-spacing: 0;
+}
+
+.itemTotalDiv{
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #686b78;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EndLine{
+    border-bottom: 1px solid #e9e9eb;
+    margin: 17px 0 15px;
+}
+
+.TotalPay{
+    width: 100%;
+    background: #fff;
+    height: 53px;
+    min-height: 60px;
+    display: flex;
+    font-weight: 600;
+    color: #282c3f;
+    z-index: 1;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.toPayEndline{
+    border-bottom: 2px solid black;
+    margin: 17px 0 15px;
+}
+
+.Ordercheckout{
+    height: 60px;
+    background: #60b246;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    z-index: 1000;
+    width: 779px;
+    position: fixed;
+    bottom: 0;
+    left: 100px;
+}

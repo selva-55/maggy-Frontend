@@ -1,0 +1,89 @@
+.OrederPlacedContent{
+    margin: 130px 180px 180px 180px;
+}
+
+.headersText{
+    font-size: 24px;
+    font-weight: 600;
+    font-family: ProximaNova,arial,Helvetica Neue,sans-serif;
+}
+
+.ordersContainer{
+    border: 1px solid #d4d5d9;
+    padding: 30px;
+    margin: 24px 0 37px;
+}
+
+.ContentSection1{
+    padding-bottom: 20px;
+    background-image: linear-gradient(90deg,#a9abb2 25%,hsla(0,0%,100%,0) 0);
+    background-position: bottom;
+    background-size: 4px 1px;
+    background-repeat: repeat-x;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.section1ContentStart{
+    display: flex;
+    align-items: center;
+    gap:25px;
+    position: relative;
+    padding-left: 18px;
+}
+.RestaurantName{
+    font-size: 17px;
+    font-weight: 500;
+    color: #3d4152;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.RestaurantLocation{
+    font-size: 13px;
+    color: #686b78;
+    text-transform: capitalize;
+    margin-top: 3px;
+}
+
+.orderIdTime{
+    margin-top: 6px;
+    color: #7e808c;
+    font-size: 12px;
+}
+
+.ContentSection2{
+    padding-top: 20px;
+    position: relative;
+}
+
+.itemList{
+    font-size: 15px;
+    padding-right: 240px;
+    color: #282c3f;
+    line-height: 20px;
+    padding-left: 18px;
+}
+
+.reorderDiv{
+    display: flex;
+    padding-left: 18px;
+    justify-content: end;
+}
+
+.reorderButton{
+    background: #73d13d;
+    color: #fff;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 20px;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 15px;
+    margin-top: 20px;
+    border: 0;
+}
