@@ -5,7 +5,7 @@ export const loginapi = (LoginformData, navigate) => {
         try {
             const response = await axios({
                 method: "POST",
-                url: "http://maggyapi-4a28cbc5c9b3.herokuapp.com/login",
+                url: "https://maggyapi-4a28cbc5c9b3.herokuapp.com/login",
                 data: JSON.stringify(LoginformData)
             })
             if (response.status === 200) {
@@ -32,7 +32,7 @@ export const signupapi = (SignupformData) => {
         try {
             const response = await axios({
                 method: "POST",
-                url: "http://maggyapi-4a28cbc5c9b3.herokuapp.com/register",
+                url: "https://maggyapi-4a28cbc5c9b3.herokuapp.com/register",
                 data: JSON.stringify(SignupformData)
             })
             if (response.status === 200) {
@@ -47,7 +47,7 @@ export const signupapi = (SignupformData) => {
 
 export const FetchUserData = async (dispatch) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/user/?id=${localStorage.getItem('user')}`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/user/?id=${localStorage.getItem('user')}`, {
             method: 'GET',
         });
 
@@ -68,7 +68,7 @@ export const FetchUserData = async (dispatch) => {
 
 export const LocationChange = async (data, dispatch) => {
     try {
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/location', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/location', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -82,7 +82,7 @@ export const LocationChange = async (data, dispatch) => {
 
 export const CityHotelsAPI = async (dispatch) => {
     try {
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/hotels', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/hotels', {
             method: 'GET',
         });
 
@@ -96,7 +96,7 @@ export const CityHotelsAPI = async (dispatch) => {
 
 export const HotelsItems = async (city, restaurantsName, dispatch) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/RestaurantsItem/?city=${city}&restaurantName=${restaurantsName}`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/RestaurantsItem/?city=${city}&restaurantName=${restaurantsName}`, {
             method: 'GET',
         });
         const result = await response.json();
@@ -108,7 +108,7 @@ export const HotelsItems = async (city, restaurantsName, dispatch) => {
 
 export const CartItems = async (city, dispatch) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/cartItems/?id=${localStorage.getItem('user')}&city=${city}`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/cartItems/?id=${localStorage.getItem('user')}&city=${city}`, {
             method: 'GET'
         });
         const result = await response.json();
@@ -120,7 +120,7 @@ export const CartItems = async (city, dispatch) => {
 
 export const CartAdd = async (data, city, dispatch) => {
     try {
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/cartAdd', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/cartAdd', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -134,7 +134,7 @@ export const CartAdd = async (data, city, dispatch) => {
 
 export const CartDelete = async (data, dispatch) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/cartDelete/?id=${data.id}`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/cartDelete/?id=${data.id}`, {
             method: 'DELETE'
         });
         await response.json();
@@ -149,7 +149,7 @@ export const CartRemoveAnotherRestaurants = async (city, dispatch) => {
         const data = {
             userId: localStorage.getItem('user')
         }
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/removeDifferentcartItem', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/removeDifferentcartItem', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -167,7 +167,7 @@ export const AddAddress = async (address, dispatch) => {
             userId: localStorage.getItem('user'),
             address: address
         }
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/updateaddress', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/updateaddress', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -184,7 +184,7 @@ export const AddAddress = async (address, dispatch) => {
 
 export const OrderitemsRemoveCartData = async () => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/orderRemoveCartItem/?id=${localStorage.getItem('user')}`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/orderRemoveCartItem/?id=${localStorage.getItem('user')}`, {
             method: 'GET',
         });
 
@@ -197,7 +197,7 @@ export const OrderitemsRemoveCartData = async () => {
 export const OrderItem = async (data, dispatch) => {
     try {
 
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/order', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/order', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -217,7 +217,7 @@ export const OrderItem = async (data, dispatch) => {
 export const ProfileUpdate = async (data, dispatch) => {
     try {
 
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/userUpdate', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/userUpdate', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -236,7 +236,7 @@ export const ProfileUpdate = async (data, dispatch) => {
 export const PasswordCheck = async (data, profileData, dispatch) => {
     try {
 
-        const response = await fetch('http://maggyapi-4a28cbc5c9b3.herokuapp.com/passwordcheck', {
+        const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/passwordcheck', {
             method: 'POST',
             body: JSON.stringify(data),
         });
@@ -257,7 +257,7 @@ export const PasswordCheck = async (data, profileData, dispatch) => {
 
 export const OrderHistoryData = async (dispatch) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/orderHistory/?id=${localStorage.getItem('user')}`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/orderHistory/?id=${localStorage.getItem('user')}`, {
             method: 'GET',
         });
         const result = await response.json();
@@ -272,7 +272,7 @@ export const OrderHistoryData = async (dispatch) => {
 
 export const OrderRepeat = async (data, dispatch) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/reorder`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/reorder`, {
             method: 'POST',
             body:JSON.stringify(data)
         });
@@ -286,7 +286,7 @@ export const OrderRepeat = async (data, dispatch) => {
 
 export const ResetPasswordApi = async (data, dispatch, navigate) => {
     try {
-        const response = await fetch(`http://maggyapi-4a28cbc5c9b3.herokuapp.com/resetPassword`, {
+        const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/resetPassword`, {
             method: 'POST',
             body:JSON.stringify(data)
         });
