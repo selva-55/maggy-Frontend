@@ -28,6 +28,7 @@ const OrderHistory = () => {
     };
 
     const handleRepeatOrder = (orders) => {
+        
         const hasHotelinList = cartItem.every((cartItems) => cartItems.HotelName === orders.HotelName)
         const data = {
             userId: orders.userId,
@@ -53,7 +54,6 @@ const OrderHistory = () => {
             })
         }
 
-        console.log(cartItem)
        
     }
 

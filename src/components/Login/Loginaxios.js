@@ -13,6 +13,10 @@ export const loginapi = (LoginformData, navigate) => {
                 dispatch(Loggedin(response.data))
                 dispatch(logindrawerClose())
                 navigate('/')
+                if (response.location === null) {
+                    LocationChange({ user_id: localStorage.getItem('user'), location: "Chennai" }, dispatch)
+                    dispatch(SetLocation("chennai"))
+                }
             }
         }
         catch (error) {
@@ -85,9 +89,10 @@ export const CityHotelsAPI = async (dispatch) => {
         const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/hotels', {
             method: 'GET',
         });
-
         const result = await response.json();
-        dispatch(Restaurants(result))
+        if (result) {
+            dispatch(Restaurants(result))
+        }
 
     } catch (error) {
         console.error('Error in LocationChange:', error);
@@ -208,7 +213,7 @@ export const OrderItem = async (data, dispatch, navigate) => {
             dispatch(orderSuccess(result))
             console.log(result)
             OrderitemsRemoveCartData()
-            navigate('/orderPlace' , {state:{orderDetails}})
+            navigate('/orderPlace', { state: { orderDetails } })
         }
     } catch (error) {
         console.error('Error in LocationChange:', error);
@@ -227,6 +232,7 @@ export const ProfileUpdate = async (data, dispatch) => {
 
         await response.json();
         alert('Profile Updated!!!')
+        FetchUserData(dispatch)
         dispatch(ProfileFieldChangeFalse())
 
     } catch (error) {
@@ -258,13 +264,18 @@ export const PasswordCheck = async (data, profileData, dispatch) => {
     }
 };
 
-export const OrderHistoryData = async (dispatch) => {
+export const OrderHistoryData = async (dispatch, navigate) => {
     try {
         const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/orderHistory/?id=${localStorage.getItem('user')}`, {
             method: 'GET',
         });
         const result = await response.json();
-        dispatch(OrderHistory(result))
+        if(result.length === 0){
+            alert("Orders not Available")
+        }else{
+            dispatch(OrderHistory(result))
+            navigate('/orderhistory')
+        }
 
     } catch (error) {
         console.error('Error in LocationChange:', error);
@@ -277,7 +288,7 @@ export const OrderRepeat = async (data, dispatch) => {
     try {
         const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/reorder`, {
             method: 'POST',
-            body:JSON.stringify(data)
+            body: JSON.stringify(data)
         });
         await response.json();
         CartItems(data.city, dispatch)
@@ -291,18 +302,18 @@ export const ResetPasswordApi = async (data, dispatch, navigate) => {
     try {
         const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/resetPassword`, {
             method: 'POST',
-            body:JSON.stringify(data)
+            body: JSON.stringify(data)
         });
         const result = await response.json();
-        if(result.msg === 'success'){
+        if (result.msg === 'success') {
             alert('Password Reset Successfull...')
-            dispatch(ResetValue({name:'email',value:''}))
-            dispatch(ResetValue({name:'password',value:''}))
-            dispatch(ResetValue({name:'confirmPassword',value:''}))
+            dispatch(ResetValue({ name: 'email', value: '' }))
+            dispatch(ResetValue({ name: 'password', value: '' }))
+            dispatch(ResetValue({ name: 'confirmPassword', value: '' }))
             navigate('/login')
-        }else{
+        } else {
             alert(`${result.msg} Please Signup!`)
-            dispatch(ResetValue({name:'email',value:''}))
+            dispatch(ResetValue({ name: 'email', value: '' }))
         }
 
     } catch (error) {

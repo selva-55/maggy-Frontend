@@ -85,12 +85,10 @@ const LoginSlice = createSlice({
         },
         Restaurants: (state, action) => {
             if (state.city === null) {
-                state.Restaurants = []
                 state.Restaurants = action.payload
             }
         },
         LocationBasedRestaurants: (state, action) => {
-            state.Restaurants = []
             state.Restaurants = action.payload
         },
         SetLocation: (state, action) => {

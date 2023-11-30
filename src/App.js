@@ -12,9 +12,7 @@ import OrderHistory from "./components/orderhistory/OrderHistory";
 import ResetPassword from "./components/Login/resetPassword";
 function App() {
   const auth = useSelector((state)=>state.login.logginStatus)
-  const hotelitemsUndefined = useSelector((state)=>state.login.hotels)
   const orderResponse = useSelector((state) => state.login.OrderResponse)
-  console.log(orderResponse.length===0)
   if(window.location.pathname=='/login'){
     localStorage.clear()
   }
@@ -24,8 +22,6 @@ function App() {
         <Routes>
           <Route path="/login" element={<Swiggy />} />
           <Route path="/" element={auth ? <HomePage /> : <Navigate to='/login' /> }/>
-          {/* <Route path="/city/:cityname" element={<CityHotels />}/> */}
-          {/* <Route path="/home" element={<HomePage />}/> */}
           <Route path="/hotelItems" element={ auth ? <Hotelitems /> : <Navigate to='/login'/>}/>
           <Route path="/checkout" element={ auth ? <CheckoutPage /> : <Navigate to='/login' />} />
           <Route path="/OrderPlace" element={ orderResponse.length !==0 ? <OrderPlace /> : <Navigate to='/' />} />
