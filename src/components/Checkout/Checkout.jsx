@@ -132,9 +132,8 @@ const CheckoutPage = () => {
             TotalPay:roundoffTotalPay,
             orderStatus:'success'
         }]
-        OrderItem(data,dispatch)
+        OrderItem(data,dispatch, navigate)
     }
-    console.log(cartItem, cartItems)
     return (
         <div className="checkoutpage">
             <Headers />
@@ -259,7 +258,7 @@ const CheckoutPage = () => {
                 <div style={{ marginLeft: '20px' }}>
                     <p>{consolidatedItemsArray.length} Item | ₹{roundoffTotalPay} </p>
                 </div>
-                <div onClick={handlePlaceOrder} style={{ marginRight: '20px', cursor: 'pointer' }}>
+                <div onClick={()=>handlePlaceOrder()} style={{ marginRight: '20px', cursor: 'pointer' }}>
                     PLACE ORDER
                 </div>
             </div>}

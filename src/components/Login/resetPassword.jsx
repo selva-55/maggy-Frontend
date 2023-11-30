@@ -35,11 +35,11 @@ const ResetPassword = () => {
         }
     }
 
-    const handlepasswordShow = () =>{
+    const handlepasswordShow = () => {
         setPasswordShow(!passwordShow)
     }
 
-    const handleConfirmpasswordShow = () =>{
+    const handleConfirmpasswordShow = () => {
         setConfirmPasswordShow(!ConfirmpasswordShow)
     }
 
@@ -53,13 +53,21 @@ const ResetPassword = () => {
                     <div className="contentHeader">Reset Password</div>
                     <form className="formDiv" onSubmit={(e) => handleUpdatePassword(e)}>
                         <p className="formLabel">Email</p>
-                        <input onChange={(e) => handleinputValue(e)} className="formInput" value={restdataValue.email} placeholder="email" name='email'></input>
+                        <input onChange={(e) => handleinputValue(e)} className="formInput" value={restdataValue.email} required placeholder="email" name='email'></input>
                         <p className="formLabel">Password</p>
                         <div className="passwordsDiv">
                             <div>
-                                <input onChange={(e) => handleinputValue(e)} className= { passwordShow ? "passwordShow" : "passwordField" } value={restdataValue.password} placeholder="password" name='password'></input>
+                                <input onChange={(e) => handleinputValue(e)}
+                                    className={passwordShow ? "passwordShow" : "passwordField"}
+                                    value={restdataValue.password}
+                                    placeholder="password"
+                                    name='password'
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character."
+                                    required
+                                />
                             </div>
-                            <div className="eyeIcon" onClick={()=>handlepasswordShow()}>
+                            <div className="eyeIcon" onClick={() => handlepasswordShow()}>
                                 {
                                     passwordShow ? <EyeFilled /> : <EyeInvisibleFilled />
                                 }
@@ -68,15 +76,24 @@ const ResetPassword = () => {
                         <p className="formLabel">Confirm Password</p>
                         <div className="passwordsDiv">
                             <div>
-                                <input onChange={(e) => handleinputValue(e)} className= { ConfirmpasswordShow ? "passwordShow" : "passwordField" } value={restdataValue.confirmPassword} placeholder="password" name='confirmPassword'></input>
+                                <input
+                                    onChange={(e) => handleinputValue(e)}
+                                    className={ConfirmpasswordShow ? "passwordShow" : "passwordField"}
+                                    value={restdataValue.confirmPassword}
+                                    placeholder="password"
+                                    name='confirmPassword'
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character."
+                                    required
+                                />
                             </div>
-                            <div className="eyeIcon" onClick={()=>handleConfirmpasswordShow()}>
+                            <div className="eyeIcon" onClick={() => handleConfirmpasswordShow()}>
                                 {
                                     ConfirmpasswordShow ? <EyeFilled /> : <EyeInvisibleFilled />
                                 }
                             </div>
                         </div>
-                        <p onClick={()=>navigate('/login')} style={{color:'#73d13d', cursor:'pointer',margin: '15px 15px 0px 15px', fontWeight:'500'}}>To Login & Signup</p>
+                        <p onClick={() => navigate('/login')} style={{ color: '#73d13d', cursor: 'pointer', margin: '15px 15px 0px 15px', fontWeight: '500' }}>To Login & Signup</p>
                         <button type="submit" className="formButton">Reset</button>
                     </form>
                 </div>

@@ -194,7 +194,7 @@ export const OrderitemsRemoveCartData = async () => {
     }
 };
 
-export const OrderItem = async (data, dispatch) => {
+export const OrderItem = async (data, dispatch, navigate) => {
     try {
 
         const response = await fetch('https://maggyapi-4a28cbc5c9b3.herokuapp.com/order', {
@@ -204,8 +204,11 @@ export const OrderItem = async (data, dispatch) => {
 
         const result = await response.json();
         if (result.msg === 'success') {
+            const orderDetails = result
             dispatch(orderSuccess(result))
+            console.log(result)
             OrderitemsRemoveCartData()
+            navigate('/orderPlace' , {state:{orderDetails}})
         }
     } catch (error) {
         console.error('Error in LocationChange:', error);

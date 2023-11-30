@@ -65,7 +65,7 @@ const OrderHistory = () => {
                     Past Orders
                 </div>
                 {
-                    orderedData.map((orders) => {
+                    orderedData.slice().reverse().map((orders) => {
                         return (
                             <>
                                 <div className="ordersContainer">

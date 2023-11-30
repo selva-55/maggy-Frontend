@@ -114,7 +114,7 @@ const Login = () => {
   }
 
 
-  const handlepathtoRest = () =>{
+  const handlepathtoRest = () => {
     dispatcher(logindrawerClose())
     navigate('/reset')
   }
@@ -166,9 +166,17 @@ const Login = () => {
               <>
                 <form onSubmit={handleLoginCredential}>
                   <div className='loginform'>
-                    <input onChange={handleLoginInputChange} className='loginPhoneNumberInput' value={formData.phonenumber} placeholder='Phone number' name='phonenumber'></input>
+                    <input
+                      onChange={handleLoginInputChange}
+                      required
+                      className='loginPhoneNumberInput'
+                      value={formData.phonenumber}
+                      placeholder='Phone number'
+                      name='phonenumber'
+                    />
+
                     <input onChange={handleLoginInputChange} type='password' className='loginPasswordInput' value={formData.password} placeholder='Password' name='password'></input>
-                    <div onClick={()=>handlepathtoRest()} style={{color:'#73d13d', fontWeight:'500', cursor:'pointer'}}>Forgot Password?</div>
+                    <div onClick={() => handlepathtoRest()} style={{ color: '#73d13d', fontWeight: '500', cursor: 'pointer' }}>Forgot Password?</div>
                     <input className='LoginFormLogin' type='submit' value='Login' />
                   </div>
                 </form>
@@ -181,7 +189,15 @@ const Login = () => {
                     <input onChange={handleSignupInputChange} className='signupformPhonenumber' value={signupformData.name} placeholder='Name' name='name'></input>
                     <input onChange={handleSignupInputChange} className='signupformPhonenumber' value={signupformData.phonenumber} placeholder='Phone number' name='phonenumber' type='tel' required></input>
                     <input onChange={handleSignupInputChange} className='signupformPhonenumber' value={signupformData.email} placeholder='Email' name='email' type='email'></input>
-                    <input onChange={handleSignupInputChange} className='signupformReferral' value={signupformData.password} placeholder='Password' name='password' type='password'></input>
+                    <input onChange={handleSignupInputChange}
+                      className='signupformReferral'
+                      value={signupformData.password}
+                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      title="Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character." 
+                      placeholder='Password' 
+                      name='password' 
+                      type='password'
+                      />
                     <input className='LoginFormLogin' type='submit' value='Continue' />
                   </div>
                 </form>
