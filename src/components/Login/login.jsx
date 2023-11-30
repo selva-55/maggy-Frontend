@@ -186,9 +186,9 @@ const Login = () => {
               <>
                 <form onSubmit={handleSignupCredential}>
                   <div className='signupform'>
-                    <input onChange={handleSignupInputChange} className='signupformPhonenumber' value={signupformData.name} placeholder='Name' name='name'></input>
-                    <input onChange={handleSignupInputChange} className='signupformPhonenumber' value={signupformData.phonenumber} placeholder='Phone number' name='phonenumber' type='tel' required></input>
-                    <input onChange={handleSignupInputChange} className='signupformPhonenumber' value={signupformData.email} placeholder='Email' name='email' type='email'></input>
+                    <input onChange={handleSignupInputChange} required className='signupformPhonenumber' value={signupformData.name} placeholder='Name' name='name'></input>
+                    <input onChange={handleSignupInputChange} required className='signupformPhonenumber' value={signupformData.phonenumber} placeholder='Phone number' name='phonenumber' type='tel' required></input>
+                    <input onChange={handleSignupInputChange} required className='signupformPhonenumber' value={signupformData.email} placeholder='Email' name='email' type='email'></input>
                     <input onChange={handleSignupInputChange}
                       className='signupformReferral'
                       value={signupformData.password}
