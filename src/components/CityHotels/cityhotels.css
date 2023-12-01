@@ -78,6 +78,7 @@
 
 .HomeLogo:hover {
     transform: scale(1.1);
+    height: 45px;
 }
 
 .swiggyLogo {

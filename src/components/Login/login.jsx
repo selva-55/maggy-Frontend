@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import swiggyLogo from '../../assets/swiggy-logo.svg';
+import maggyLogo from '../../assets/Maggymaggy.svg';
 import loginRoll from '../../assets/swp.png';
 import { Drawer } from 'antd';
 import { logindrawerOpen, logindrawerClose, getcityName } from './LoginRedux';
@@ -123,7 +123,7 @@ const Login = () => {
   return (
     <div className="loginLayer">
       <div className="loginLogoButton">
-        <img className='swiggyLogo' src={swiggyLogo} alt="Swiggy Logo" />
+        <img className='swiggyLogo' src={maggyLogo} alt="Swiggy Logo" />
         <div className="loginButtons">
           <button className='LoginButton' onClick={() => dispatcher(logindrawerOpen('login'))}>Login</button>
           <button className='Signupbutton' onClick={() => dispatcher(logindrawerOpen('signup'))}>Sign up</button>
@@ -133,10 +133,6 @@ const Login = () => {
         <h1 className={`${slide ? 'slideAni' : 'slideText'}`}>{text}</h1>
         <h2 className='slideTextLabel'>Order food from favorite restaurants near you.</h2>
       </div>
-      {/* <div className='searchLocation'>
-        <input className='searchInput' placeholder='Enter your delivery location'></input>
-        <button className='findFood'>FIND FOOD</button>
-      </div> */}
       <h3 className='PopularCitieslabel'>Popular cities in India</h3>
       <ul className='cityList'>
         {
