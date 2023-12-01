@@ -13,6 +13,7 @@ const OrderHistory = () => {
     }, [dispatch])
     const orderedData = useSelector((state) => state.login.Ordereddata)
     const cartItem = useSelector((state) => state.login.cartItems)
+    const city = useSelector((state) => state.login.city)
     const formatTimestamp = (timestamp) => {
         const dateObject = new Date(timestamp);
         const options = {
@@ -27,8 +28,7 @@ const OrderHistory = () => {
         return dateObject.toLocaleString("en-US", options);
     };
 
-    const handleRepeatOrder = (orders) => {
-        
+    const handleRepeatOrder = (orders) => {        
         const hasHotelinList = cartItem.every((cartItems) => cartItems.HotelName === orders.HotelName)
         const data = {
             userId: orders.userId,
@@ -43,15 +43,20 @@ const OrderHistory = () => {
             OrderRepeat(data, dispatch)
         }
 
-        if(hasHotelinList){
-            OrderRepeat(data, dispatch)
+        if(orders.city===city){
+            if(hasHotelinList){
+                OrderRepeat(data, dispatch)
+            }
+            else{
+                Modal.confirm({
+                    title:'Alert',
+                    content:'Item in cart have another Restaurant item can you Afresh cart?',
+                    onOk:()=>RemoveAnotherRestaurantItems()
+                })
+            }
         }
         else{
-            Modal.confirm({
-                title:'Alert',
-                content:'Item in cart have another Restaurant item can you Afresh cart?',
-                onOk:()=>RemoveAnotherRestaurantItems()
-            })
+            alert('City location is different...')
         }
 
        
