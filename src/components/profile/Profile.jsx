@@ -8,11 +8,7 @@ import { ProfileDrawer, ProfileFieldChangeFalse, ProfileFieldChangeTrue, Profile
 import { useNavigate } from "react-router-dom"
 
 
-const Profile = () => {
-    const UserData = useSelector((state) => state.login.userData)
-    const profileFieldChanges = useSelector((state) => state.login.profileFieldChange)
-    const profileModel = useSelector((state) => state.login.profilemodel)
-    const DrawerOpenClose = useSelector((state) => state.login.profileDrawer)
+const Profile = ({UserData, profileFieldChanges, profileModel, DrawerOpenClose}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -24,16 +20,15 @@ const Profile = () => {
     })
     
     useEffect(() => {
-        FetchUserData(dispatch)
         SetChangeValue({
             name: UserData.name,
             email: UserData.email,
             phoneNumber: UserData.phoneNumber,
             password: 'Password'
         })
-    }, [dispatch, UserData]);
+    }, [UserData]);
     
-
+    console.log("profile")
 
     const handleChange = (e) => {
         const { name } = e.target

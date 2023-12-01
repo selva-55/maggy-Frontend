@@ -23,7 +23,7 @@ function App() {
           <Route path="/login" element={<Swiggy />} />
           <Route path="/" element={auth ? <HomePage /> : <Navigate to='/login' /> }/>
           <Route path="/hotelItems" element={ auth ? <Hotelitems /> : <Navigate to='/login'/>}/>
-          <Route path="/checkout" element={ auth ? <CheckoutPage /> : <Navigate to='/login' />} />
+          <Route path="/checkout" element={ auth ?  <CheckoutPage /> : <Navigate to='/login' />} />
           <Route path="/OrderPlace" element={ orderResponse.length !==0 ? <OrderPlace /> : <Navigate to='/' />} />
           <Route path="/orderhistory" element={  <OrderHistory />} />
           <Route path="/reset" element={  <ResetPassword />} />

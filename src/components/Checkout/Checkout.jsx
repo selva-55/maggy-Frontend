@@ -27,9 +27,6 @@ const CheckoutPage = () => {
     const navigate = useNavigate()
 
 
-    useEffect(()=>{
-        CartItems(city, dispatch)
-    },[dispatch])
     
     const handleAddress = (e) => {
         setAddress(e.target.value)

@@ -26,21 +26,21 @@ import hotel20 from '../../assets/hotel20.avif';
 import { Card } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { getHotelItems } from '.././Login/LoginRedux'
-import { useEffect, useState } from 'react'
-import { CityHotelsAPI,HotelsItems } from '../Login/Loginaxios'
-
 
 const CityHotels = () => {
     const dispatch = useDispatch()
     const city = useSelector((state) => state.login.city)
     const navigate = useNavigate()
-    useEffect(() => {
-        CityHotelsAPI(dispatch)
-    }, [dispatch])
     const RestaurantsList = useSelector((state) => state.login.Restaurants)
-    console.log(RestaurantsList)
     const hotelImages = [hotel1, hotel2, hotel3, hotel4, hotel5, hotel6, hotel7, hotel8, hotel9, hotel10, hotel11, hotel12, hotel13, hotel14, hotel15, hotel16, hotel17, hotel18, hotel19, hotel20];
+    const handleRestaurantpage = (restaurantsItem) => {
+        if(city === null){
+            alert("Select city before choose Restaurants")
+        }
+        else{
+            navigate('/hotelItems', { state: { restaurantsItem, city} })
+        }
+    }
     return (
         <>
             <div className='cityThemeContainer'>
@@ -68,7 +68,7 @@ const CityHotels = () => {
                     {
                         RestaurantsList.map((restaurantsItem, index) => {
                             return (
-                                <Card className='CardStyle' onClick={() =>{ navigate('/hotelItems', { state: { restaurantsItem, city} }) }
+                                <Card className='CardStyle' onClick={() =>{ handleRestaurantpage(restaurantsItem) }
                                 }
                                 >
                                     <div className=''>

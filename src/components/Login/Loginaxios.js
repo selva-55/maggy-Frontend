@@ -13,10 +13,6 @@ export const loginapi = (LoginformData, navigate) => {
                 dispatch(Loggedin(response.data))
                 dispatch(logindrawerClose())
                 navigate('/')
-                if (response.location === null) {
-                    LocationChange({ user_id: localStorage.getItem('user'), location: "Chennai" }, dispatch)
-                    dispatch(SetLocation("chennai"))
-                }
             }
         }
         catch (error) {
@@ -54,16 +50,23 @@ export const FetchUserData = async (dispatch) => {
         const response = await fetch(`https://maggyapi-4a28cbc5c9b3.herokuapp.com/user/?id=${localStorage.getItem('user')}`, {
             method: 'GET',
         });
-
         const result = await response.json();
         if (result) {
             dispatch(UserDataDetailsInitial(result))
-            CartItems(result.location, dispatch)
-            LocationChange({ user_id: localStorage.getItem('user'), location: result.location }, dispatch)
             dispatch(SetLocation(result.location))
             dispatch(SetPhonenumber(result.phoneNumber))
             dispatch(SetUsername(result.name))
             dispatch(SetAddress(result.address))
+            if (result.location === null){
+                CityHotelsAPI(dispatch)
+            }
+            else{
+                const data = {
+                    user_id:result.id,
+                    location:result.location
+                }
+                LocationChange(data, dispatch)
+            }
         }
     } catch (error) {
         console.error('Error in LocationChange:', error);
@@ -78,6 +81,7 @@ export const LocationChange = async (data, dispatch) => {
         });
 
         const result = await response.json();
+        CartItems(data.location, dispatch)
         dispatch(LocationBasedRestaurants(result))
     } catch (error) {
         console.error('Error in LocationChange:', error);
@@ -90,9 +94,7 @@ export const CityHotelsAPI = async (dispatch) => {
             method: 'GET',
         });
         const result = await response.json();
-        if (result) {
-            dispatch(Restaurants(result))
-        }
+        dispatch(Restaurants(result))
 
     } catch (error) {
         console.error('Error in LocationChange:', error);

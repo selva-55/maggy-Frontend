@@ -31,9 +31,7 @@ const Hotelitems = () => {
     const hotelImages = [hotel1, hotel2, hotel3, hotel4, hotel5, hotel6, hotel7, hotel8, hotel9, hotel10, hotel11, hotel12, hotel13, hotel14, hotel15, hotel16, hotel17, hotel18, hotel19, hotel20];
     const { restaurantsItem , city} = StateLocation.state || {}
     const navigate = useNavigate()
-    useEffect(() => {
-        CartItems(city, dispatch)
-    }, [dispatch])
+    
     const HotelDetails = restaurantsItem
     const cartItems = useSelector((state) => state.login.cartItems)
     const handleCartItems = (items) => {

@@ -10,6 +10,12 @@ import Profile from "../profile/Profile";
 const Headers = () => {
     const UserData = useSelector((state) => state.login.userData)
     const cartItems = useSelector((state) => state.login.cartItems)
+    const ProfileDrawerCondition = useSelector((state) => state.login.profileDrawer)
+    const profileFieldChanges = useSelector((state) => state.login.profileFieldChange)
+    const profileModel = useSelector((state) => state.login.profilemodel)
+    const DrawerOpenClose = useSelector((state) => state.login.profileDrawer)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [username, setUserName] = useState({
         name: 'Loading...',
         location: 'Loading...',
@@ -28,11 +34,15 @@ const Headers = () => {
         'Mumbai',
         'Pune',
     ]
-    useEffect(() => {
+
+    useEffect(()=>{
         FetchUserData(dispatch)
+
+    },[dispatch])
+    
+    useEffect(() => {
         setUserName(prev => ({ ...prev, name: UserData.name, location: UserData.location, user_id: UserData.id, phoneNumber:UserData.phoneNumber, email:UserData.email }));
     }, [UserData]);
-
     const aggregatedItems = {};
     cartItems.forEach((item) => {
         const itemName = item.item;
@@ -43,8 +53,7 @@ const Headers = () => {
         }
     });
     const consolidatedItemsArray = Object.values(aggregatedItems);
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    
 
     const handleLocation = (e) => {
         setUserName({ ...username, location: e.target.value })
@@ -61,6 +70,12 @@ const Headers = () => {
         SetopenPopover(false)
         dispatch(ProfileDrawer(true))
     }
+
+    const handleorderhistory = () =>{
+        SetopenPopover(false)
+        OrderHistoryData(dispatch, navigate)
+    }
+
     return (
         <div className='headers'>
             <div style={{ width: '100%' }}>
@@ -87,7 +102,7 @@ const Headers = () => {
                             content={
                                 <div className="PopoverDiv">
                                     <button onClick={() => handleProfileDrawer()} className="PopoverButton">Profile</button>
-                                    <button onClick={() => OrderHistoryData(dispatch, navigate)} className="PopoverButton">Order history</button>
+                                    <button onClick={() =>handleorderhistory()} className="PopoverButton">Order history</button>
                                     <button onClick={() => {navigate('/login');localStorage.clear()}} className="PopoverButton">Logout </button>
                                 </div>}
                             trigger="click"
@@ -107,7 +122,7 @@ const Headers = () => {
                     </ul>
                 </div>
             </div>
-            <Profile  />
+            {ProfileDrawerCondition && <Profile UserData = {UserData} profileFieldChanges = {profileFieldChanges} profileModel = {profileModel} DrawerOpenClose = {DrawerOpenClose}  />}
         </div>
     )
 }
